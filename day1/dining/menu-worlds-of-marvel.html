@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Worlds of Marvel Menu</title><style>
+:root{--navy:#071a33;--red:#c81d2a;--gold:#e2aa3a;--cream:#f7f1e5;--ink:#142033;--card:#fff;--line:#eadfcb}
+*{box-sizing:border-box} html{background:var(--cream)} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--cream)}
+a{color:inherit}.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;border-bottom:4px solid var(--gold);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top .title{font-weight:900;letter-spacing:.04em}.top a{text-decoration:none;font-weight:800;background:#ffffff14;border:1px solid #ffffff30;border-radius:999px;padding:8px 12px}
+.wrap{max-width:760px;margin:auto;padding:16px 14px 30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 18px rgba(7,26,51,.08);padding:18px;margin-bottom:14px}
+h1{color:var(--navy);margin:.1em 0 .4em;font-size:clamp(2rem,7vw,3rem);line-height:1}
+h2{margin:22px 0 8px;color:var(--red);font-size:1.25rem;border-bottom:2px solid var(--gold);padding-bottom:5px}
+h3{margin:0 0 4px;color:var(--navy);font-size:1.03rem}.item{padding:10px 0;border-bottom:1px solid #eee5d8}.item:last-child{border-bottom:none}.item p{margin:0;color:#3f4b5c;line-height:1.4}
+.note{color:#647184;font-size:.9rem}
+.hero{position:relative;background:#000}.hero img{display:block;width:100%;height:auto}
+.hotspot{position:absolute;display:block;border-radius:10px}
+.hotspot:focus{outline:4px solid #fff;outline-offset:-4px}
+.hs-1923{left:4.0%;top:86.1%;width:38.0%;height:7.4%}
+.hs-pride{left:49.2%;top:86.1%;width:37.8%;height:7.4%}
+.hs-marvel{left:95.2%;top:86.1%;width:0.1%;height:7.4%} /* overridden below for panel bounds */
+@media (orientation:portrait) and (max-width:900px){
+  .rotate{display:flex}
+}
+.rotate{display:none;position:fixed;inset:0;z-index:20;background:rgba(7,26,51,.96);color:#fff;align-items:center;justify-content:center;text-align:center;padding:28px}
+.rotate .box{max-width:340px}.rotate .icon{font-size:3rem}.rotate button{margin-top:14px;border:0;border-radius:999px;padding:10px 16px;font-weight:800}
+body{padding-bottom:92px!important;}
+</style>
+<style id="oft-three-button-style">
+.oft-bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:9990;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:rgba(247,245,240,.96);border-top:1px solid #ddd3c6;backdrop-filter:blur(10px)}
+.oft-bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);gap:8px}
+.oft-bottom-btn{min-height:56px;border-radius:15px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;font-family:Arial,sans-serif;font-weight:900;font-size:.88rem;line-height:1;text-align:center;box-sizing:border-box}
+.oft-bottom-daily{background:#D72638;color:white;border:2px solid #b51d2b}
+.oft-bottom-home{background:#F4C542;color:#0B1F3A;border:2px solid #d7aa22;font-size:1.45rem}
+.oft-bottom-camera{background:#0B1F3A;color:white;border:2px solid #19365f;cursor:pointer}
+.oft-camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap}
+</style>
+
+</head>
+<body>
+<header class="top"><a href="index.html">← Dining Guide</a><div class="title">Worlds of Marvel</div><span></span></header>
+<main class="wrap">
+<section class="card">
+<h1>Worlds of Marvel</h1>
+<p class="note">Menu items transcribed from the supplied OFT menu document.</p>
+<h2>Showcase Apps</h2>
+<div class="item"><h3>Dill and Meyer Lemon-marinated Shrimp</h3><p>Stark Industries: Minneola, English Cucumber, Crème fraiche, Salmon Caviar</p></div>
+<div class="item"><h3>Steamed Bao Bun</h3><p>Seared Ginger Orange Pork Belly, Toasted Sesame Seeds, Pickled Daikon, Spring Onions, Mirin Soy Honey Glaze</p></div>
+<div class="item"><h3>Hearts of Palm with Cilantro and Lime</h3><p>Wakanda Design Group: Cucumber, Purple Onion, Bell Pepper, Sweet Potato, Spiced Yellow Pepper, Orange, Infinity Stone Popcorn</p></div>
+<div class="item"><h3>Sautéed Crimini and Oyster Mushrooms</h3><p>Sesame Artichoke Purée, Baby Spinach, Yuzu Vinaigrette</p></div>
+<h2>Wakandan Salads</h2>
+<div class="item"><h3>Heirloom Tomato Salad</h3><p>Escarole, Arugula, Purple Onion, Black Beans, Blue and Red Corn Chips, Parsley, Bearss Lime</p></div>
+<div class="item"><h3>Iceberg Wedge</h3><p>Candied Pecans, Smoked Bacon Lardons, Black and Globe Radish, Maytag Blue Cheese</p></div>
+<h2>From the Sokovian Kettle</h2>
+<div class="item"><h3>“Kartoffelsuppe”</h3><p>Creamed Potato Soup, Carrots, Celery, Knockwurst, Thyme</p></div>
+<div class="item"><h3>White Cheddar and Broccolini Soup</h3><p>Sour Cream, Red Beet, Lemon</p></div>
+<h2>Bread Service</h2>
+<div class="item"><h3>Marble Loaf</h3><p>With Red Bell Pepper Dipping Sauce</p></div>
+<h2>Entrées Assemble</h2>
+<div class="item"><h3>Berbere Spiced Pork Chop</h3><p>Wakanda: Wakandan Vegetable Pilau, Pomegranate, Red Pepper Sauce, Rainbow Chard, Roasted Scallion</p></div>
+<div class="item"><h3>Chicken Schnitzel</h3><p>Sokovia: Panko-crusted Chicken Breast, Butter Sautéed Potatoes, Caramelized Onions, Long Green Beans, Lemon, Anchovy, Capers</p></div>
+<div class="item"><h3>Grilled Tuna Steak</h3><p>Stark Industries: Black Bean Muneta, Queso Fresco, Crisp Cassava, Roasted Corn Chipotle Salsa</p></div>
+<div class="item"><h3>Golden Mystic Pasta</h3><p>Kamar-Taj: Caramelized Scallops, Angel Hair, Chardonnay Lemon Saffron Cream, Roasted Vine Tomatoes, Malabar Spinach</p></div>
+<div class="item"><h3>Rosemary Roasted Beef Tenderloin</h3><p>Madripoor: Carved and served with Celeriac puree, Crisp Parsnip, Buttered Asparagus, Roasted Shallot, and Truffle Cabernet Jus</p></div>
+<div class="item"><h3>Ricotta Gnocchi</h3><p>Wakanda: Fontina Cheese, Caramelized Grape Tomato Confit, Broccoli Rabe, Arugula Pesto</p></div>
+<div class="item"><h3>Shiitake and Tofu Udon</h3><p>Ta Lo: Udon Noodles, Baby Bok Choy, Tofu, Red Onions, Kombu, Enoki Mushrooms, Miso Shiitake Broth</p></div>
+<h2>Lighter Note Offerings</h2>
+<div class="item"><h3>Lamb Shawarma Salad</h3><p>Shawarma Palace NYC: Slow-roasted Cumin spiced pulled Lamb Leg in mini Pitas, with Iceberg, Endive, Romaine Lettuce, Sumac Onions, Vine Tomatoes, Pickled Red Cabbage, Roasted Chickpeas, Cucumber and Lemon Yogurt Dressing</p></div>
+<div class="item"><h3>Grilled Grain-fed Sirloin Steak</h3><p>Served with Garden Vegetables and your choice of Steamed White Rice or Baked Potato</p></div>
+<div class="item"><h3>Slow-roasted Breast of Chicken</h3><p>Served with Garden Vegetables and your choice of Steamed White Rice or Baked Potato</p></div>
+<div class="item"><h3>Oven-baked Fillet of Salmon</h3><p>Served with Garden Vegetables and your choice of Steamed White Rice or Baked Potato</p></div>
+<h2>Desserts</h2>
+<div class="item"><h3>Cheesecake Byte</h3><p>Fresh Berries, Strawberry Jelly, Raspberry Chocolate Cream</p></div>
+<div class="item"><h3>Subatomic Sticky Date Pudding</h3><p>Balsamic Caramel Glaze, Vanilla Ice Cream</p></div>
+<div class="item"><h3>Quantum Key Lime Pie</h3><p>Key Lime Curd, Raspberry Gel, Whipped Lime Ganache</p></div>
+<div class="item"><h3>Nano Dobos Torta</h3><p>Joconde Sponge layered Cake, Rich Chocolate Butter Cream, Caramel Center Filling</p></div>
+<div class="item"><h3>Wakanda Flourless Chocolate Beetroot Cake</h3><p>Chocolate Beetroot Cake, Pepper Crème, Milk Chocolate Soil</p></div>
+<div class="item"><h3>Pym Doughnut Sundae</h3><p>Dulce de Leche Ice Cream, Pecan Blondie, Caramel Fudge Sauce, Chocolate Glazed Donut, Whipped Cream</p></div>
+</section>
+</main>
+<nav class="oft-bottom-bar" aria-label="OFT navigation">
+  <div class="oft-bottom-inner">
+    <a class="oft-bottom-btn oft-bottom-daily" href="https://mattj009.github.io/oft-disney-cruise-app-clean/lineup.html"><span>✨</span>DAILY DISNEY</a>
+    <a class="oft-bottom-btn oft-bottom-home" href="https://mattj009.github.io/oft-disney-cruise-app-clean/index.html" aria-label="Home" title="Home">🏠</a>
+    <label class="oft-bottom-btn oft-bottom-camera" for="oft-camera"><span>📷</span>SMILE, PAL!</label>
+    <input id="oft-camera" class="oft-camera-input" type="file" accept="image/*" capture="environment">
+  </div>
+</nav>
+
+</body></html>

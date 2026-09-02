@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OFT Gold Fart Cruise App — Day 1</title>
+<style>
+:root{
+  --navy:#0B1F3A; --red:#D72638; --gold:#F4C542; --cream:#F7F5F0;
+  --ink:#142033; --muted:#5E6877; --card:#FFFFFF; --line:#E7DED0;
+  --shadow:0 6px 18px rgba(11,31,58,.10);
+}
+*{box-sizing:border-box}
+html{background:var(--cream)}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:radial-gradient(circle at 85% 0%,rgba(244,197,66,.12),transparent 28%),var(--cream);
+  padding-bottom:94px;
+}
+.top{
+  background:linear-gradient(180deg,#08182e 0%,var(--navy) 100%);
+  border-bottom:5px solid var(--red);
+  padding:18px 18px 16px;
+  text-align:center;
+}
+.top img{
+  width:min(68vw,320px);
+  aspect-ratio:1/1;
+  object-fit:contain;
+  border-radius:50%;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.25));
+}
+main{max-width:760px;margin:0 auto;padding:16px}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  padding:20px;
+  margin:0 0 16px;
+}
+.daycard{position:relative;overflow:hidden}
+.daycard:before{
+  content:"";position:absolute;inset:0 auto 0 0;width:7px;
+  background:linear-gradient(var(--gold),var(--red));
+}
+.eyebrow{
+  display:inline-block;font-weight:900;letter-spacing:.12em;color:var(--red);
+  font-size:.82rem;text-transform:uppercase;margin-bottom:6px
+}
+h1{margin:0;color:var(--navy);font-size:clamp(2rem,8vw,3.35rem);line-height:1;letter-spacing:-.03em}
+.date{margin-top:10px;color:var(--muted);font-weight:700}
+.section-title{
+  display:flex;align-items:center;gap:10px;margin:0 0 14px;color:var(--navy);
+  font-size:1.35rem;font-weight:900;letter-spacing:.01em
+}
+.section-title:after{content:"";height:2px;flex:1;background:linear-gradient(90deg,var(--gold),transparent)}
+.icon{
+  width:34px;height:34px;border-radius:50%;display:inline-grid;place-items:center;
+  background:#fff6d9;color:#a46f00;border:1px solid #edd18b;flex:0 0 auto
+}
+.highlight{padding:13px 0;border-top:1px solid #eee6db}
+.highlight:first-of-type{border-top:none;padding-top:0}
+.highlight h3{margin:0 0 4px;color:var(--navy);font-size:1.04rem}
+.highlight p{margin:0;line-height:1.42}
+.toolbox{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tool{
+  text-decoration:none;color:var(--navy);border:1.5px solid #e8c46a;border-radius:16px;
+  min-height:88px;padding:14px;display:flex;align-items:center;gap:12px;font-weight:900;
+  background:linear-gradient(180deg,#fff,#fffaf0)
+}
+.tool small{display:block;font-weight:600;color:var(--muted);margin-top:3px}
+.tip{background:linear-gradient(135deg,#fff8dc 0%,#fff 65%)}
+.tip p{margin:.35rem 0;line-height:1.45}
+.bonus{display:grid;grid-template-columns:145px 1fr;gap:16px;align-items:center}
+.bonus img{
+  width:145px;aspect-ratio:4/5;object-fit:cover;border-radius:14px;
+  border:1px solid #e9e1d5;background:#f3eee7
+}
+.bonus h3{margin:0 0 5px;color:var(--navy);font-size:1.18rem}
+.bonus p{margin:0;line-height:1.4;color:#334155}
+.bonus strong{color:var(--red)}
+.bonus-label{
+  color:var(--red);font-weight:900;font-size:.78rem;letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:4px
+}
+.bonus-link{
+  display:inline-flex;margin-top:12px;padding:9px 12px;border-radius:999px;
+  text-decoration:none;background:var(--red);color:#fff;font-weight:900;font-size:.84rem
+}
+.fixedbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:10;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(247,245,240,.94);backdrop-filter:blur(10px);border-top:1px solid #ddd3c6
+}
+.fixedinner{max-width:760px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fixedbtn{
+  min-height:58px;border-radius:16px;text-decoration:none;display:flex;align-items:center;
+  justify-content:center;gap:9px;font-weight:900;box-shadow:0 5px 14px rgba(0,0,0,.12)
+}
+.disney{background:var(--navy);color:white;border:2px solid #19365f}
+.food{background:var(--red);color:white;border:2px solid #b51d2b}
+.fixedbtn span{font-size:1.25rem}
+.note{font-size:.78rem;color:#7b8490;text-align:center;margin:4px 0 0}
+@media(max-width:560px){
+  main{padding:12px}.card{padding:16px;border-radius:17px;margin-bottom:12px}
+  .toolbox{grid-template-columns:1fr}.bonus{grid-template-columns:112px 1fr;gap:12px}
+  .bonus img{width:112px}.section-title{font-size:1.15rem}
+}
+.camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;clip-path:inset(50%)}
+.fixedbtn.food{cursor:pointer}
+body{padding-bottom:92px!important;}
+</style>
+
+<style id="oft-three-button-style">
+.oft-bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:9990;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:rgba(247,245,240,.96);border-top:1px solid #ddd3c6;backdrop-filter:blur(10px)}
+.oft-bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);gap:8px}
+.oft-bottom-btn{min-height:56px;border-radius:15px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;font-family:Arial,sans-serif;font-weight:900;font-size:.88rem;line-height:1;text-align:center;box-sizing:border-box}
+.oft-bottom-daily{background:#D72638;color:white;border:2px solid #b51d2b}
+.oft-bottom-home{background:#F4C542;color:#0B1F3A;border:2px solid #d7aa22;font-size:1.45rem}
+.oft-bottom-camera{background:#0B1F3A;color:white;border:2px solid #19365f;cursor:pointer}
+.oft-camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap}
+</style>
+
+</head>
+<body>
+
+<style id="oft-lock-style">
+.oft-lock{position:fixed;inset:0;z-index:99999;background:#0B1F3A;display:flex;align-items:center;justify-content:center;padding:22px;font-family:Arial,sans-serif}
+.oft-lock-card{width:min(520px,100%);background:#F7F5F0;border:3px solid #F4C542;border-radius:24px;padding:24px;box-shadow:0 18px 60px rgba(0,0,0,.42);color:#0B1F3A;text-align:center}
+.oft-lock-kicker{font-weight:900;color:#D72638;letter-spacing:.08em;font-size:.82rem;margin-bottom:8px}
+.oft-lock h1{margin:0 0 14px;font-size:1.65rem}.oft-lock p{font-size:1.03rem;line-height:1.45;margin:0 0 18px}
+.oft-lock input{width:100%;box-sizing:border-box;font-size:1.08rem;padding:14px 15px;border:2px solid #c9c0b4;border-radius:13px;background:#fff;color:#0B1F3A}
+.oft-lock button{width:100%;margin-top:12px;border:0;border-radius:13px;background:#D72638;color:#fff;font-size:1.05rem;font-weight:900;padding:14px;cursor:pointer}
+.oft-lock-error{min-height:1.25em;color:#a31320;font-weight:800;margin-top:10px!important;margin-bottom:0!important}
+.oft-lock-note{font-size:.82rem!important;opacity:.7;margin-top:10px!important;margin-bottom:0!important}
+</style>
+
+<div class="oft-lock" id="oft-lock"><div class="oft-lock-card">
+<div class="oft-lock-kicker">OFT SECURITY DEPARTMENT</div><h1>Prove You Belong Here</h1>
+<p>Enter today’s answer.</p>
+<form id="oft-lock-form"><input id="oft-lock-answer" type="text" autocomplete="off" autocapitalize="off" placeholder="Your answer"><button type="submit">UNLOCK</button></form>
+<p class="oft-lock-error" id="oft-lock-error"></p><p class="oft-lock-note">Spaces and capitalization don’t matter.</p>
+</div></div>
+<script>
+(function(){
+ const k="oft-unlocked-day1";
+ if(sessionStorage.getItem(k)==="yes"){document.getElementById("oft-lock").remove();return;}
+ const n=s=>(s||"").toLowerCase().replace(/\s+/g,""), expected="magic";
+ const form=document.getElementById("oft-lock-form"),input=document.getElementById("oft-lock-answer"),err=document.getElementById("oft-lock-error");
+ form.addEventListener("submit",e=>{e.preventDefault();if(n(input.value)===expected){sessionStorage.setItem(k,"yes");document.getElementById("oft-lock").remove();}else{err.textContent="Nope. The OFT bouncer remains unconvinced.";input.select();}});
+ setTimeout(()=>input.focus(),100);
+})();
+</script>
+<header class="top">
+  <img src="assets/day-logo.jpg" alt="Gold Fart Disney Cruises logo">
+</header>
+
+<main>
+  <section class="card daycard">
+    <div class="eyebrow">Day 1</div>
+    <h1>Welcome aboard the Disney Destiny!</h1>
+    <div class="date">Friday, September 18, 2026</div>
+  </section>
+
+  <section class="card">
+    <div class="section-title"><span class="icon">★</span>DAILY HIGHLIGHTS</div>
+
+    <div class="highlight">
+      <h3>🚢 11:30 a.m. — Embarkation</h3>
+      <p>Welcome aboard!</p>
+    </div>
+
+    <div class="highlight">
+      <h3>🥪 Embarkation Lunch</h3>
+      <p>Skip the buffet and head for the embarkation-day dining room. The OFT recommendation awaits.</p>
+    </div>
+
+    <div class="highlight">
+      <h3>🍽️ Dining Changes — Triton Lounge</h3>
+      <p>Take care of any needed dining adjustments.</p>
+    </div>
+
+    <div class="highlight">
+      <h3>👻 Visit the Haunted Mansion Parlor</h3>
+      <p>A proper first-day introduction to one of the Destiny’s signature spaces.</p>
+    </div>
+
+    <div class="highlight">
+      <h3>🎭 5:45 p.m. — Disney Seas the Adventure</h3>
+      <p>Tonight’s show.</p>
+    </div>
+
+    <div class="highlight">
+      <h3>🍴 8:15 p.m. — Dinner</h3>
+      <p>Rotational dining assignment to be announced.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-title"><span class="icon">🧰</span>TOOLBOX</div>
+    <div class="toolbox">
+      <a class="tool" href="https://weather.com/us/florida/fort-lauderdale/airport/fort-lauderdale-hollywood-international-airport/today" target="_blank" rel="noopener">
+        <span style="font-size:1.8rem">🌤️</span>
+        <span>LOCAL WEATHER<small>Fort Lauderdale</small></span>
+      </a>
+      <a class="tool" href="dining/index.html">
+        <span style="font-size:1.8rem">🍽️</span>
+        <span>ROTATIONAL DINING<small>Restaurants & menus</small></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="card tip">
+    <div class="section-title"><span class="icon">💡</span>OFT PRO TIP</div>
+    <p>Order room service late tonight and get <strong>coffee for tomorrow morning</strong> — and iced tea for Joanie.</p>
+    <p>Disney’s insulated carafes will keep the coffee hot overnight, so it can be waiting for you when you wake up. Put the cream in your stateroom fridge and you’re all set.</p>
+    <p>And while you’re ordering, throw in some cookies. Morning problem solved.</p>
+  </section>
+
+  <section class="card bonus">
+    <img src="assets/embarkation-lunch.png" alt="Embarkation Day Lunch ad">
+    <div>
+      <div class="bonus-label">Daily Bonus Feature 1</div>
+      <h3>Embarkation Day Lunch</h3>
+      <p><strong>Old Farts Love Consistency.</strong> The menu may be familiar, but that’s exactly the point. The OFT Farmer recommends one thing above all else: <strong>The Muffuletta Sandwich.</strong></p>
+    </div>
+  </section>
+
+  <section class="card bonus">
+    <img src="assets/haunted-mansion.png" alt="Haunted Mansion Parlor ad">
+    <div>
+      <div class="bonus-label">Daily Bonus Feature 2</div>
+      <h3>Haunted Mansion Parlor</h3>
+      <p>Losing your head has never been so refreshing. Drop in for a drink, meet the spirits, and remember: asking for a straw may have consequences.</p>
+    </div>
+  </section>
+
+  <section class="card bonus">
+    <img src="assets/rotational-dining.png" alt="Rotational Dining on the Disney Destiny">
+    <div>
+      <div class="bonus-label">Daily Bonus Feature 3</div>
+      <h3>Rotational Dining on the Disney Destiny</h3>
+      <p>Three restaurants. Three very different experiences. <strong>1923. Pride Lands. Worlds of Marvel.</strong></p>
+      <p style="margin-top:6px">Your complete OFT dining guide includes restaurant descriptions and menus for all three.</p>
+      <a class="bonus-link" href="dining/index.html">OPEN DINING GUIDE →</a>
+    </div>
+  </section>
+
+  <p class="note">Day 1 • OFT Gold Fart Cruise App</p>
+</main>
+
+
+
+<nav class="oft-bottom-bar" aria-label="OFT navigation">
+  <div class="oft-bottom-inner">
+    <a class="oft-bottom-btn oft-bottom-daily" href="https://mattj009.github.io/oft-disney-cruise-app-clean/lineup.html"><span>✨</span>DAILY DISNEY</a>
+    <a class="oft-bottom-btn oft-bottom-home" href="https://mattj009.github.io/oft-disney-cruise-app-clean/index.html" aria-label="Home" title="Home">🏠</a>
+    <label class="oft-bottom-btn oft-bottom-camera" for="oft-camera"><span>📷</span>SMILE, PAL!</label>
+    <input id="oft-camera" class="oft-camera-input" type="file" accept="image/*" capture="environment">
+  </div>
+</nav>
+
+</body>
+</html>
