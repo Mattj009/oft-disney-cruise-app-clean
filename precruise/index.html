@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OFT Gold Fart Cruise App — Pre-Cruise</title>
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --red:#D72638;
+    --gold:#F4C542;
+    --cream:#F7F5F0;
+    --ink:#142033;
+    --muted:#5E6877;
+    --card:#FFFFFF;
+    --line:#E7DED0;
+    --shadow:0 6px 18px rgba(11,31,58,.10);
+  }
+  *{box-sizing:border-box}
+  html{background:var(--cream)}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 85% 0%,rgba(244,197,66,.12),transparent 28%),
+      var(--cream);
+    padding-bottom:94px;
+  }
+  .top{
+    background:linear-gradient(180deg,#08182e 0%,var(--navy) 100%);
+    border-bottom:5px solid var(--red);
+    padding:18px 18px 16px;
+    text-align:center;
+  }
+  .top img{
+    width:min(74vw,360px);
+    max-height:180px;
+    object-fit:contain;
+    filter:drop-shadow(0 3px 8px rgba(0,0,0,.25));
+  }
+  main{max-width:760px;margin:0 auto;padding:16px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    padding:20px;
+    margin:0 0 16px;
+  }
+  .daycard{
+    position:relative;
+    overflow:hidden;
+  }
+  .daycard:before{
+    content:"";
+    position:absolute;
+    inset:0 auto 0 0;
+    width:7px;
+    background:linear-gradient(var(--gold),var(--red));
+  }
+  .eyebrow{
+    display:inline-block;
+    font-weight:900;
+    letter-spacing:.12em;
+    color:var(--red);
+    font-size:.82rem;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  h1{
+    margin:0;
+    color:var(--navy);
+    font-size:clamp(2rem,8vw,3.35rem);
+    line-height:1;
+    letter-spacing:-.03em;
+  }
+  .date{
+    margin-top:10px;
+    color:var(--muted);
+    font-weight:700;
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 14px;
+    color:var(--navy);
+    font-size:1.35rem;
+    font-weight:900;
+    letter-spacing:.01em;
+  }
+  .section-title:after{
+    content:"";
+    height:2px;
+    flex:1;
+    background:linear-gradient(90deg,var(--gold),transparent);
+  }
+  .icon{
+    width:34px;height:34px;border-radius:50%;
+    display:inline-grid;place-items:center;
+    background:#fff6d9;color:#a46f00;
+    border:1px solid #edd18b;
+    flex:0 0 auto;
+  }
+  .highlight{
+    padding:13px 0;
+    border-top:1px solid #eee6db;
+  }
+  .highlight:first-of-type{border-top:none;padding-top:0}
+  .highlight h3{
+    margin:0 0 4px;
+    color:var(--navy);
+    font-size:1.04rem;
+  }
+  .highlight p{margin:0;line-height:1.42}
+  .toolbox{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .tool{
+    text-decoration:none;
+    color:var(--navy);
+    border:1.5px solid #e8c46a;
+    border-radius:16px;
+    min-height:88px;
+    padding:14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+    background:linear-gradient(180deg,#fff,#fffaf0);
+  }
+  .tool small{
+    display:block;
+    font-weight:600;
+    color:var(--muted);
+    margin-top:3px;
+  }
+  .tip{
+    background:linear-gradient(135deg,#fff8dc 0%,#fff 65%);
+  }
+  .tip p{margin:.35rem 0;line-height:1.45}
+  .bonus{
+    display:grid;
+    grid-template-columns:145px 1fr;
+    gap:16px;
+    align-items:center;
+  }
+  .bonus img{
+    width:145px;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius:14px;
+    border:1px solid #e9e1d5;
+    background:#f3eee7;
+  }
+  .bonus.logo img{
+    aspect-ratio:1/1;
+    object-fit:contain;
+    padding:8px;
+  }
+  .bonus h3{
+    margin:0 0 5px;
+    color:var(--navy);
+    font-size:1.18rem;
+  }
+  .bonus p{margin:0;line-height:1.4;color:#334155}
+  .bonus-label{
+    color:var(--red);
+    font-weight:900;
+    font-size:.78rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .fixedbar{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:10;
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(247,245,240,.94);
+    backdrop-filter:blur(10px);
+    border-top:1px solid #ddd3c6;
+  }
+  .fixedinner{
+    max-width:760px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .fixedbtn{
+    min-height:58px;
+    border-radius:16px;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    font-weight:900;
+    box-shadow:0 5px 14px rgba(0,0,0,.12);
+  }
+  .disney{background:var(--navy);color:white;border:2px solid #19365f}
+  .food{background:var(--red);color:white;border:2px solid #b51d2b}
+  .fixedbtn span{font-size:1.25rem}
+  .note{
+    font-size:.78rem;color:#7b8490;text-align:center;margin:4px 0 0;
+  }
+  @media(max-width:560px){
+    main{padding:12px}
+    .card{padding:16px;border-radius:17px;margin-bottom:12px}
+    .toolbox{grid-template-columns:1fr}
+    .bonus{grid-template-columns:112px 1fr;gap:12px}
+    .bonus img{width:112px}
+    .section-title{font-size:1.15rem}
+  }
+.camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;clip-path:inset(50%)}
+.fixedbtn.food{cursor:pointer}
+body{padding-bottom:92px!important;}
+</style>
+
+<style id="oft-three-button-style">
+.oft-bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:9990;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:rgba(247,245,240,.96);border-top:1px solid #ddd3c6;backdrop-filter:blur(10px)}
+.oft-bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);gap:8px}
+.oft-bottom-btn{min-height:56px;border-radius:15px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;font-family:Arial,sans-serif;font-weight:900;font-size:.88rem;line-height:1;text-align:center;box-sizing:border-box}
+.oft-bottom-daily{background:#D72638;color:white;border:2px solid #b51d2b}
+.oft-bottom-home{background:#F4C542;color:#0B1F3A;border:2px solid #d7aa22;font-size:1.45rem}
+.oft-bottom-camera{background:#0B1F3A;color:white;border:2px solid #19365f;cursor:pointer}
+.oft-camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <img src="assets/hero-logo.png" alt="Old Fart Cruises logo">
+</header>
+
+<main>
+  <section class="card daycard">
+    <div class="eyebrow">Pre-Cruise</div>
+    <h1>Welcome to Fort Lauderdale!</h1>
+    <div class="date">Thursday, September 17, 2026</div>
+  </section>
+
+  <section class="card">
+    <div class="section-title"><span class="icon">★</span>DAILY HIGHLIGHTS</div>
+
+    <div class="highlight">
+      <h3>✈️ Arrival</h3>
+      <p>John and Robin arrive at Fort Lauderdale-Hollywood International Airport on Southwest Flight 1761 at <strong>9:15 p.m.</strong></p>
+    </div>
+
+    <div class="highlight">
+      <h3>🏨 Hotel</h3>
+      <p><strong>Hollywood Hotel Ft Lauderdale Airport Cruise Port</strong><br>
+      <span style="color:#5E6877">(formerly Best Western Plus)</span><br>
+      2601 North 29th Avenue<br>
+      Hollywood, FL 33020<br>
+      954-923-7300</p>
+    </div>
+
+    <div class="highlight">
+      <h3>🍽️ Late-Night Mandatory Pre-Cruise Meeting</h3>
+      <p><strong>Denny’s — next to the hotel</strong></p>
+      <p style="margin-top:7px">Tonight, you will receive the crucial password needed to officially open the <strong>OFT Gold Fart Cruise App.</strong></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-title"><span class="icon">🧰</span>TOOLBOX</div>
+    <div class="toolbox">
+      <a class="tool" href="https://weather.com/us/florida/fort-lauderdale/airport/fort-lauderdale-hollywood-international-airport/today" target="_blank" rel="noopener">
+        <span style="font-size:1.8rem">🌤️</span>
+        <span>LOCAL WEATHER<small>Fort Lauderdale</small></span>
+      </a>
+      <a class="tool" href="https://maps.app.goo.gl/CU2etG3qXJXxzpZ6A" target="_blank" rel="noopener">
+        <span style="font-size:1.8rem">🗺️</span>
+        <span>MAP<small>FLL → Hotel</small></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="card tip">
+    <div class="section-title"><span class="icon">💡</span>OFT TIP</div>
+    <p>Before bed, remove your airline luggage tags and attach your <strong>Disney luggage tags</strong>.</p>
+    <p>You may also want to pick up a couple of bottles of water or soda for the stateroom fridge. Disney does, of course, have complimentary fountain drinks available on the pool deck.</p>
+  </section>
+
+  <section class="card bonus">
+    <img src="assets/movie-poster.png" alt="Old Fart Cruises movie poster">
+    <div>
+      <div class="bonus-label">Daily Bonus Feature 1</div>
+      <h3>Old Fart Cruises — The Movie</h3>
+      <p>The voyage hasn’t even started yet, and somehow it already has a theatrical release.</p>
+    </div>
+  </section>
+
+  <section class="card bonus logo">
+    <img src="assets/retired-logo.png" alt="Original retired Old Fart Cruises logo">
+    <div>
+      <div class="bonus-label">Daily Bonus Feature 2</div>
+      <h3>From the OFT Archives</h3>
+      <p>The original retired Old Fart Cruises logo — proof that even Old Fart Travel occasionally evolves.</p>
+    </div>
+  </section>
+
+  <section class="card bonus">
+    <img src="assets/four-corners.webp" alt="The Four Corners movie poster">
+    <div>
+      <div class="bonus-label">Daily Bonus Feature 3</div>
+      <h3>OFT Road Trip Flashback</h3>
+      <p>Before there were cruise decks, there were four states, four friends, and one highly questionable cinematic legacy.</p>
+    </div>
+  </section>
+
+  <p class="note">Pre-cruise page • OFT Gold Fart Cruise App</p>
+</main>
+
+
+
+<nav class="oft-bottom-bar" aria-label="OFT navigation">
+  <div class="oft-bottom-inner">
+    <a class="oft-bottom-btn oft-bottom-daily" href="https://mattj009.github.io/oft-disney-cruise-app-clean/lineup.html"><span>✨</span>DAILY DISNEY</a>
+    <a class="oft-bottom-btn oft-bottom-home" href="https://mattj009.github.io/oft-disney-cruise-app-clean/index.html" aria-label="Home" title="Home">🏠</a>
+    <label class="oft-bottom-btn oft-bottom-camera" for="oft-camera"><span>📷</span>SMILE, PAL!</label>
+    <input id="oft-camera" class="oft-camera-input" type="file" accept="image/*" capture="environment">
+  </div>
+</nav>
+
+</body>
+</html>

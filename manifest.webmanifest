@@ -1,0 +1,17 @@
+{
+  "name": "Old Fart Cruises \u2014 Disney Destiny",
+  "short_name": "OFT Cruise",
+  "start_url": "/oft-disney-cruise-app-clean/index.html",
+  "scope": "/oft-disney-cruise-app-clean/",
+  "display": "standalone",
+  "background_color": "#0B1F3A",
+  "theme_color": "#0B1F3A",
+  "icons": [
+    {
+      "src": "assets/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
