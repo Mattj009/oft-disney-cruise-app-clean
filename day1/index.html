@@ -124,6 +124,16 @@ body{padding-bottom:92px!important;}
 .oft-camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap}
 </style>
 
+
+<style id="oft-bonus-lightbox-style">
+.bonus img{cursor:zoom-in}
+.oft-bonus-hint{font-size:.78rem!important;opacity:.68;margin-top:7px!important;font-weight:700}
+.oft-lightbox{position:fixed;inset:0;z-index:100000;background:rgba(5,15,30,.94);display:none;align-items:center;justify-content:center;padding:18px}
+.oft-lightbox.open{display:flex}
+.oft-lightbox img{max-width:96vw;max-height:90vh;object-fit:contain;border-radius:10px;box-shadow:0 16px 60px rgba(0,0,0,.55)}
+.oft-lightbox-close{position:fixed;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,.7);background:#0B1F3A;color:white;font-size:1.7rem;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer}
+</style>
+
 </head>
 <body>
 
@@ -226,7 +236,7 @@ body{padding-bottom:92px!important;}
       <div class="bonus-label">Daily Bonus Feature 1</div>
       <h3>Embarkation Day Lunch</h3>
       <p><strong>Old Farts Love Consistency.</strong> The menu may be familiar, but that’s exactly the point. The OFT Farmer recommends one thing above all else: <strong>The Muffuletta Sandwich.</strong></p>
-    </div>
+    <p class="oft-bonus-hint">Tap the image to view full size.</p></div>
   </section>
 
   <section class="card bonus">
@@ -235,7 +245,7 @@ body{padding-bottom:92px!important;}
       <div class="bonus-label">Daily Bonus Feature 2</div>
       <h3>Haunted Mansion Parlor</h3>
       <p>Losing your head has never been so refreshing. Drop in for a drink, meet the spirits, and remember: asking for a straw may have consequences.</p>
-    </div>
+    <p class="oft-bonus-hint">Tap the image to view full size.</p></div>
   </section>
 
   <section class="card bonus">
@@ -246,13 +256,47 @@ body{padding-bottom:92px!important;}
       <p>Three restaurants. Three very different experiences. <strong>1923. Pride Lands. Worlds of Marvel.</strong></p>
       <p style="margin-top:6px">Your complete OFT dining guide includes restaurant descriptions and menus for all three.</p>
       <a class="bonus-link" href="dining/index.html">OPEN DINING GUIDE →</a>
-    </div>
+    <p class="oft-bonus-hint">Tap the image to view full size.</p></div>
   </section>
 
   <p class="note">Day 1 • OFT Gold Fart Cruise App</p>
 </main>
 
 
+
+
+<div class="oft-lightbox" id="oft-lightbox" aria-hidden="true">
+  <button class="oft-lightbox-close" id="oft-lightbox-close" aria-label="Close">×</button>
+  <img id="oft-lightbox-image" alt="">
+</div>
+<script>
+(function(){
+  const box=document.getElementById("oft-lightbox");
+  const big=document.getElementById("oft-lightbox-image");
+  const close=document.getElementById("oft-lightbox-close");
+  document.querySelectorAll(".bonus img").forEach(img=>{
+    img.setAttribute("tabindex","0");
+    img.setAttribute("role","button");
+    img.setAttribute("aria-label",(img.alt||"Bonus image")+" — open full size");
+    const open=()=>{
+      big.src=img.src;
+      big.alt=img.alt||"Bonus image";
+      box.classList.add("open");
+      box.setAttribute("aria-hidden","false");
+    };
+    img.addEventListener("click",open);
+    img.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open();}});
+  });
+  const shut=()=>{
+    box.classList.remove("open");
+    box.setAttribute("aria-hidden","true");
+    big.removeAttribute("src");
+  };
+  close.addEventListener("click",shut);
+  box.addEventListener("click",e=>{if(e.target===box) shut();});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&box.classList.contains("open")) shut();});
+})();
+</script>
 
 <nav class="oft-bottom-bar" aria-label="OFT navigation">
   <div class="oft-bottom-inner">
