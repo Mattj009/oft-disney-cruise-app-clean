@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rotational Dining — Disney Destiny</title><style>
+:root{--navy:#071a33;--red:#c81d2a;--gold:#e2aa3a;--cream:#f7f1e5;--ink:#142033;--card:#fff;--line:#eadfcb}
+*{box-sizing:border-box} html{background:var(--cream)} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--cream)}
+a{color:inherit}.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;border-bottom:4px solid var(--gold);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top .title{font-weight:900;letter-spacing:.04em}.top a{text-decoration:none;font-weight:800;background:#ffffff14;border:1px solid #ffffff30;border-radius:999px;padding:8px 12px}
+.wrap{max-width:760px;margin:auto;padding:16px 14px 30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 18px rgba(7,26,51,.08);padding:18px;margin-bottom:14px}
+h1{color:var(--navy);margin:.1em 0 .4em;font-size:clamp(2rem,7vw,3rem);line-height:1}
+h2{margin:22px 0 8px;color:var(--red);font-size:1.25rem;border-bottom:2px solid var(--gold);padding-bottom:5px}
+h3{margin:0 0 4px;color:var(--navy);font-size:1.03rem}.item{padding:10px 0;border-bottom:1px solid #eee5d8}.item:last-child{border-bottom:none}.item p{margin:0;color:#3f4b5c;line-height:1.4}
+.note{color:#647184;font-size:.9rem}
+.hero{position:relative;background:#000}.hero img{display:block;width:100%;height:auto}
+.hotspot{position:absolute;display:block;border-radius:10px}
+.hotspot:focus{outline:4px solid #fff;outline-offset:-4px}
+.hs-1923{left:4.0%;top:86.1%;width:38.0%;height:7.4%}
+.hs-pride{left:49.2%;top:86.1%;width:37.8%;height:7.4%}
+.hs-marvel{left:95.2%;top:86.1%;width:0.1%;height:7.4%} /* overridden below for panel bounds */
+@media (orientation:portrait) and (max-width:900px){
+  .rotate{display:flex}
+}
+.rotate{display:none;position:fixed;inset:0;z-index:20;background:rgba(7,26,51,.96);color:#fff;align-items:center;justify-content:center;text-align:center;padding:28px}
+.rotate .box{max-width:340px}.rotate .icon{font-size:3rem}.rotate button{margin-top:14px;border:0;border-radius:999px;padding:10px 16px;font-weight:800}
+body{padding-bottom:92px!important;}
+</style>
+<style id="oft-three-button-style">
+.oft-bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:9990;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:rgba(247,245,240,.96);border-top:1px solid #ddd3c6;backdrop-filter:blur(10px)}
+.oft-bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);gap:8px}
+.oft-bottom-btn{min-height:56px;border-radius:15px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;font-family:Arial,sans-serif;font-weight:900;font-size:.88rem;line-height:1;text-align:center;box-sizing:border-box}
+.oft-bottom-daily{background:#D72638;color:white;border:2px solid #b51d2b}
+.oft-bottom-home{background:#F4C542;color:#0B1F3A;border:2px solid #d7aa22;font-size:1.45rem}
+.oft-bottom-camera{background:#0B1F3A;color:white;border:2px solid #19365f;cursor:pointer}
+.oft-camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap}
+</style>
+
+</head>
+<body>
+<div class="rotate" id="rotatePrompt"><div class="box"><div class="icon">📱↻</div><h2 style="color:#fff;border:0">Rotate your phone</h2><p>This dining guide is designed for landscape viewing.</p><button onclick="document.getElementById('rotatePrompt').style.display='none'">View anyway</button></div></div>
+<div class="hero">
+<img src="assets/rotational-dining-guide.png" alt="Rotational Dining on the Disney Destiny — 1923, Pride Lands, and Worlds of Marvel">
+<a class="hotspot" style="left:3.2%;top:84.8%;width:24.5%;height:8.0%" href="menu-1923.html" aria-label="Open 1923 menu"></a>
+<a class="hotspot" style="left:32.8%;top:84.8%;width:25.8%;height:8.0%" href="menu-pride-lands.html" aria-label="Open Pride Lands menu"></a>
+<a class="hotspot" style="left:63.5%;top:84.8%;width:25.5%;height:8.0%" href="menu-worlds-of-marvel.html" aria-label="Open Worlds of Marvel menu"></a>
+</div>
+
+<nav class="oft-bottom-bar" aria-label="OFT navigation">
+  <div class="oft-bottom-inner">
+    <a class="oft-bottom-btn oft-bottom-daily" href="https://mattj009.github.io/oft-disney-cruise-app-clean/lineup.html"><span>✨</span>DAILY DISNEY</a>
+    <a class="oft-bottom-btn oft-bottom-home" href="https://mattj009.github.io/oft-disney-cruise-app-clean/index.html" aria-label="Home" title="Home">🏠</a>
+    <label class="oft-bottom-btn oft-bottom-camera" for="oft-camera"><span>📷</span>SMILE, PAL!</label>
+    <input id="oft-camera" class="oft-camera-input" type="file" accept="image/*" capture="environment">
+  </div>
+</nav>
+
+</body></html>
