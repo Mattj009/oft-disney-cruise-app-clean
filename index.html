@@ -3,6 +3,85 @@
 <meta name="theme-color" content="#0B1F3A"><link rel="icon" href="assets/icon.jpg"><link rel="apple-touch-icon" href="assets/icon.jpg">
 <link rel="manifest" href="manifest.webmanifest"><title>Old Fart Cruises — Disney Destiny</title>
 <style>html,body{margin:0;min-height:100%;background:#07182d}.wrap{position:relative;max-width:760px;margin:auto;line-height:0}.poster{display:block;width:100%;height:auto}.hotspot{position:absolute;display:block;z-index:2}.hero{left:8%;top:7%;width:84%;height:69%}.vault{left:13%;top:83.5%;width:74%;height:10.5%}.hotspot:focus{outline:4px solid #F4C542;outline-offset:-4px;border-radius:18px}</style>
+
+<style id="oft-install-style">
+.oft-install-wrap{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  display:flex;justify-content:center;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  pointer-events:none
+}
+.oft-install-btn{
+  pointer-events:auto;display:none;
+  min-height:50px;padding:0 22px;border-radius:16px;
+  border:2px solid #d7aa22;background:#F4C542;color:#0B1F3A;
+  font:900 .95rem Arial,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.22);
+  cursor:pointer
+}
+.oft-install-btn.show{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.oft-install-note{
+  display:none;position:fixed;left:14px;right:14px;bottom:78px;z-index:60;
+  max-width:520px;margin:auto;background:#F7F5F0;color:#0B1F3A;
+  border:2px solid #F4C542;border-radius:16px;padding:14px 16px;
+  font:700 .92rem/1.35 Arial,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.25)
+}
+.oft-install-note.show{display:block}
+</style>
+
 </head><body><main class="wrap"><img class="poster" src="assets/cover.jpg" alt="Old Fart Cruises — Halloween on the High Seas">
 <a class="hotspot hero" href="https://mattj009.github.io/oft-disney-cruise-app-clean/lineup.html" aria-label="Open Daily Disney cruise lineup"></a>
-<a class="hotspot vault" href="https://mattj009.github.io/oft-disney-cruise-app-clean/vault/index.html" aria-label="Open the Bonus Vault"></a></main></body></html>
+<a class="hotspot vault" href="https://mattj009.github.io/oft-disney-cruise-app-clean/vault/index.html" aria-label="Open the Bonus Vault"></a></main>
+<div class="oft-install-wrap">
+  <button id="oft-install-btn" class="oft-install-btn" type="button">📲 INSTALL APP</button>
+</div>
+<div id="oft-install-note" class="oft-install-note" role="status"></div>
+<script>
+(function(){
+  let deferredPrompt = null;
+  const btn = document.getElementById('oft-install-btn');
+  const note = document.getElementById('oft-install-note');
+
+  const showNote = (msg) => {
+    note.textContent = msg;
+    note.classList.add('show');
+    setTimeout(() => note.classList.remove('show'), 4500);
+  };
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    btn.classList.add('show');
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    btn.classList.remove('show');
+    showNote('OFT Cruise App installed.');
+  });
+
+  btn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      btn.classList.remove('show');
+    } else {
+      showNote('In Chrome, open the ⋮ menu and choose “Add to Home screen” or “Install app.”');
+    }
+  });
+
+  // Show a useful install button on normal browser visits even if Chrome
+  // does not expose beforeinstallprompt immediately.
+  if (!window.matchMedia('(display-mode: standalone)').matches) {
+    setTimeout(() => btn.classList.add('show'), 900);
+  }
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/oft-disney-cruise-app-clean/sw.js').catch(()=>{});
+    });
+  }
+})();
+</script>
+
+</body></html>
