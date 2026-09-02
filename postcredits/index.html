@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B1F3A">
+<title>OFT Post-Credits Scene</title>
+<style>
+:root{--navy:#0B1F3A;--red:#D72638;--gold:#F4C542;--cream:#F7F5F0}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--navy);font-family:Arial,sans-serif}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 18px 100px}
+.card{width:min(520px,100%);background:var(--cream);border:3px solid var(--gold);border-radius:24px;padding:24px;text-align:center;box-shadow:0 18px 60px rgba(0,0,0,.4);color:var(--navy)}
+.kicker{font-weight:900;color:var(--red);letter-spacing:.08em;font-size:.82rem;margin-bottom:8px}
+h1{margin:0 0 14px;font-size:1.65rem}
+p{font-size:1.03rem;line-height:1.45;margin:0 0 18px}
+input{width:100%;font-size:1.08rem;padding:14px 15px;border:2px solid #c9c0b4;border-radius:13px;background:white;color:var(--navy)}
+button{width:100%;margin-top:12px;border:0;border-radius:13px;background:var(--red);color:white;font-size:1.05rem;font-weight:900;padding:14px;cursor:pointer}
+#error{min-height:1.25em;color:#a31320;font-weight:800;margin-top:10px;margin-bottom:0}
+.note{font-size:.82rem;opacity:.7;margin-top:10px}
+.oft-bottom-bar{position:fixed;left:0;right:0;bottom:0;z-index:9990;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:rgba(247,245,240,.96);border-top:1px solid #ddd3c6;backdrop-filter:blur(10px)}
+.oft-bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);gap:8px}
+.oft-bottom-btn{min-height:56px;border-radius:15px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;font-weight:900;font-size:.88rem;line-height:1;text-align:center}
+.daily{background:var(--red);color:white;border:2px solid #b51d2b}
+.home{background:var(--gold);color:var(--navy);border:2px solid #d7aa22;font-size:1.45rem}
+.camera{background:var(--navy);color:white;border:2px solid #19365f;cursor:pointer}
+.camera-input{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="card">
+    <div class="kicker">ONE MORE THING...</div>
+    <h1>Post-Credits Scene</h1>
+    <p>Enter the post-credits answer.</p>
+    <form id="gate-form">
+      <input id="answer" type="text" autocomplete="off" autocapitalize="off" placeholder="Your answer">
+      <button type="submit">ROLL THE CREDITS</button>
+    </form>
+    <p id="error"></p>
+    <p class="note">Spaces and capitalization don’t matter.</p>
+  </section>
+</main>
+
+<nav class="oft-bottom-bar" aria-label="OFT navigation">
+  <div class="oft-bottom-inner">
+    <a class="oft-bottom-btn daily" href="https://mattj009.github.io/oft-disney-cruise-app-clean/lineup.html">✨ DAILY DISNEY</a>
+    <a class="oft-bottom-btn home" href="https://mattj009.github.io/oft-disney-cruise-app-clean/index.html" aria-label="Home">🏠</a>
+    <label class="oft-bottom-btn camera" for="oft-camera">📷 SMILE, PAL!</label>
+    <input id="oft-camera" class="camera-input" type="file" accept="image/*" capture="environment">
+  </div>
+</nav>
+
+<script>
+(function(){
+  const key = "oft-unlocked-postcredits";
+  const destination = "https://photos.app.goo.gl/MiFDoPtg5rAMpbkJA";
+  const normalize = s => (s || "").toLowerCase().replace(/\s+/g, "");
+  const expected = "transam";
+
+  if (localStorage.getItem(key) === "yes") {
+    location.replace(destination);
+    return;
+  }
+
+  const form = document.getElementById("gate-form");
+  const input = document.getElementById("answer");
+  const error = document.getElementById("error");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (normalize(input.value) === expected) {
+      localStorage.setItem(key, "yes");
+      location.href = destination;
+    } else {
+      error.textContent = "Nope. The OFT projectionist is still waiting.";
+      input.select();
+    }
+  });
+
+  setTimeout(() => input.focus(), 100);
+})();
+</script>
+</body>
+</html>

@@ -75,10 +75,10 @@ body{padding-bottom:92px!important;}
 <script>
 (function(){
  const k="oft-unlocked-day4";
- if(sessionStorage.getItem(k)==="yes"){document.getElementById("oft-lock").remove();return;}
+ if(localStorage.getItem(k)==="yes"){document.getElementById("oft-lock").remove();return;}
  const n=s=>(s||"").toLowerCase().replace(/\s+/g,""), expected="spiderman";
  const form=document.getElementById("oft-lock-form"),input=document.getElementById("oft-lock-answer"),err=document.getElementById("oft-lock-error");
- form.addEventListener("submit",e=>{e.preventDefault();if(n(input.value)===expected){sessionStorage.setItem(k,"yes");document.getElementById("oft-lock").remove();}else{err.textContent="Nope. The OFT bouncer remains unconvinced.";input.select();}});
+ form.addEventListener("submit",e=>{e.preventDefault();if(n(input.value)===expected){localStorage.setItem(k,"yes");document.getElementById("oft-lock").remove();}else{err.textContent="Nope. The OFT bouncer remains unconvinced.";input.select();}});
  setTimeout(()=>input.focus(),100);
 })();
 </script>
